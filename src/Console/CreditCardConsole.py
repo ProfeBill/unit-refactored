@@ -1,4 +1,7 @@
-import Payment
+import sys
+sys.path.append("src")
+
+import Logic.Payment as Payment
 """
 La interfaz de usuario del programa debe separarse del modulo 
 que contiene la lógica.
@@ -12,5 +15,5 @@ monto = float( input("Monto de la compra:") )
 tasa = float( input("Tasa de interés de la tarjeta:") )
 plazo = float( input("Numero de cuotas en que va a diferir la compra:") )
 
-print(  Payment.calcularCuota(monto,tasa,plazo)  )
+print(  Payment.calculate_payment(monto,tasa,plazo)  )
 
