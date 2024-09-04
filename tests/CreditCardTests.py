@@ -83,6 +83,19 @@ class CreditCardTest(unittest.TestCase):
         # y los demas parametros son los parametros del metodo bajo prueba
         self.assertRaises( Payment.TasaExcesiva,  Payment.calculate_payment, purchase_amount, interest_rate, number_payments )
 
+    def testPayment3_with(self):
+        """ purchase_amount con interest_rate excesiva """
+        purchase_amount = 50000
+        interest_rate = 12.4
+        number_payments = 60
+        
+        # Todas las instruccion que vayan dentro del with se ejecutan como un solo bloque
+        # y el resultado se entrega a self.assertRaises
+        # las excepciones que se generen, tambien son entregadas a assertRaises
+        with self.assertRaises( Payment.TasaExcesiva ):
+            Payment.calculate_payment( purchase_amount, interest_rate, number_payments )
+
+
 # Este fragmento de codigo permite ejecutar la prueb individualmente
 # Va fijo en todas las pruebas
 if __name__ == '__main__':
